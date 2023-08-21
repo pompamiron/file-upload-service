@@ -1,0 +1,376 @@
+{
+	"info": {
+		"name": "FILE-UPLOAD-SERVICE API Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST /file_upload_service - Positive Test: Successful Upload",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test@example.com\",\n    \"file\": {\n        \"fileName\": \"test-file.txt\",\n        \"fileData\": \"dGVzdCBmaWxlIGRhdGE=\"\n    }\n}"
+				},
+				"url": {
+					"raw": "{{URL}}",
+					"host": [
+						"{{URL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /file_upload_service - Negative Test: Missing Email",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "your-mock-api-key"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"file\":{\"fileName\":\"test-file.txt\",\"fileData\":\"dGVzdCBmaWxlIGRhdGE=\"}}"
+				},
+				"url": {
+					"raw": "http://your-api-url/file_upload_service",
+					"protocol": "http",
+					"host": [
+						"your-api-url"
+					],
+					"path": [
+						"file_upload_service"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /file_upload_service - Negative Test: Missing File Data",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "your-mock-api-key"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\":\"test@example.com\",\"file\":{\"fileName\":\"test-file.txt\"}}"
+				},
+				"url": {
+					"raw": "http://your-api-url/file_upload_service",
+					"protocol": "http",
+					"host": [
+						"your-api-url"
+					],
+					"path": [
+						"file_upload_service"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /file_upload_service - Negative Test: Missing File Name",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "your-mock-api-key"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\":\"test@example.com\",\"file\":{\"fileData\":\"dGVzdCBmaWxlIGRhdGE=\"}}"
+				},
+				"url": {
+					"raw": "http://your-api-url/file_upload_service",
+					"protocol": "http",
+					"host": [
+						"your-api-url"
+					],
+					"path": [
+						"file_upload_service"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /file_upload_service - Negative Test: Invalid Base64 File Data",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "your-mock-api-key"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\":\"test@example.com\",\"file\":{\"fileName\":\"test-file.txt\",\"fileData\":\"invalid-base64-data\"}}"
+				},
+				"url": {
+					"raw": "http://your-api-url/file_upload_service",
+					"protocol": "http",
+					"host": [
+						"your-api-url"
+					],
+					"path": [
+						"file_upload_service"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /file_upload_service - Negative Test: Invalid File Type",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "your-mock-api-key"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\":\"test@example.com\",\"file\":{\"fileName\":\"invalid-file.exe\",\"fileData\":\"dGVzdCBmaWxlIGRhdGE=\"}}"
+				},
+				"url": {
+					"raw": "http://your-api-url/file_upload_service",
+					"protocol": "http",
+					"host": [
+						"your-api-url"
+					],
+					"path": [
+						"file_upload_service"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /file_upload_service - Negative Test: S3 Upload Error",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "your-mock-api-key"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\":\"test@example.com\",\"file\":{\"fileName\":\"test-file.txt\",\"fileData\":\"dGVzdCBmaWxlIGRhdGE=\"}}"
+				},
+				"url": {
+					"raw": "http://your-api-url/file_upload_service",
+					"protocol": "http",
+					"host": [
+						"your-api-url"
+					],
+					"path": [
+						"file_upload_service"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /file_upload_service - Negative Test: Email Send Error",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "your-mock-api-key"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\":\"test@example.com\",\"file\":{\"fileName\":\"test-file.txt\",\"fileData\":\"dGVzdCBmaWxlIGRhdGE=\"}}"
+				},
+				"url": {
+					"raw": "http://your-api-url/file_upload_service",
+					"protocol": "http",
+					"host": [
+						"your-api-url"
+					],
+					"path": [
+						"file_upload_service"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /file_upload_service - Negative Test: Missing API Key",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\":\"test@example.com\",\"file\":{\"fileName\":\"test-file.txt\",\"fileData\":\"dGVzdCBmaWxlIGRhdGE=\"}}"
+				},
+				"url": {
+					"raw": "http://your-api-url/file_upload_service",
+					"protocol": "http",
+					"host": [
+						"your-api-url"
+					],
+					"path": [
+						"file_upload_service"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /file_upload_service - Negative Test: Invalid HTTP Method",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "your-mock-api-key"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://your-api-url/file_upload_service",
+					"protocol": "http",
+					"host": [
+						"your-api-url"
+					],
+					"path": [
+						"file_upload_service"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /file_upload_service - Negative Test: Invalid Path",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\":\"test@example.com\",\"file\":{\"fileName\":\"test-file.txt\",\"fileData\":\"dGVzdCBmaWxlIGRhdGE=\"}}"
+				},
+				"url": {
+					"raw": "{{URL}}-invalid",
+					"host": [
+						"{{URL}}-invalid"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "your-x-api-key",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "x-api-key",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://your-api-url/file_upload_service"
+		},
+		{
+			"key": "EMAIL",
+			"value": "test@example.com",
+			"type": "string"
+		}
+	]
+}

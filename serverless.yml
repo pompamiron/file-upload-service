@@ -1,0 +1,61 @@
+service: file-upload-service
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  stage: ${opt:stage, 'dev'} 
+  region: ap-southeast-2
+  environment:
+    S3_BUCKET: YOUR_S3_BUCKET  # Replace with your S3 bucket name
+    SENDER_EMAIL: your@email.test  # Replace with your sender email address
+    IAM_ROLE: arn:aws:iam::your_IAM_ROLE # Replace with your IAM ROLE
+
+  apiGateway:
+    shouldStartNameWithService: true
+    minimumCompressionSize: 1024
+    binaryMediaTypes:
+      - 'multipart/form-data'
+    apiKeys:
+      - file-upload-service
+
+resources:
+  Resources:
+    UploadFileServiceBucket:
+      Type: "AWS::S3::Bucket"
+      Properties:
+        BucketName: ${self:provider.environment.S3_BUCKET}
+        AccessControl: Private
+        CorsConfiguration:
+          CorsRules:
+            - AllowedOrigins:
+                - "*"
+              AllowedMethods:
+                - GET
+                - PUT
+                - POST
+                - DELETE
+              AllowedHeaders:
+                - "*"
+    UploadFileServiceTopic:
+      Type: "AWS::SNS::Topic"
+      Properties:
+        DisplayName: "UploadFileServiceTopic"
+        TopicName: "UploadFileServiceTopic"
+
+custom:
+  documentation:
+    openApiFile: "./swagger.yaml" 
+
+plugins:
+  - serverless-openapi-documenter
+
+functions:
+  fileUploadFunction:
+    handler: fileUploadHandler.handler
+    role: ${self:provider.environment.IAM_ROLE}
+    events:
+      - http:
+          path: file_upload_service
+          method: post
+          private: true

@@ -1,0 +1,15 @@
+{
+  "name": "file-upload-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "chalakorn manpirom",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.6.3",
+    "serverless-openapi-documenter": "^0.0.69"
+  }
+}

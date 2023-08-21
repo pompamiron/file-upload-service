@@ -1,0 +1,78 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: File Upload API
+paths:
+  /file_upload_service:
+    post:
+      summary: Upload a file and send an email notification
+      security:
+        - api_key: []
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: x-api-key
+          in: header
+          type: string
+          required: true
+          description: API Key for authentication
+        - in: body
+          name: body
+          required: true
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+                format: email
+                description: Email address for notification
+              file:
+                type: object
+                properties:
+                  fileName:
+                    type: string
+                    description: Name of the file
+                  fileData:
+                    type: string
+                    description: Base64-encoded file data
+                required:
+                  - fileName
+                  - fileData
+      responses:
+        '200':
+          description: File uploaded and email sent successfully
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+          examples:
+            application/json:
+              message: File uploaded and email sent successfully
+        '400':
+          description: Bad request, missing parameters or invalid file data
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+          examples:
+            application/json:
+              message: Invalid file type
+        '500':
+          description: Internal server error
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+          examples:
+            application/json:
+              message: An error occurred
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "x-api-key"
+    in: "header"
