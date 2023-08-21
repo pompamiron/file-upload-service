@@ -16,6 +16,7 @@ Welcome to the **File Upload Service** project! This is a serverless REST API bu
 - [Testing](#testing)
   - [Unit Testing](#unit-testing)
   - [API Testing](#api-testing)
+- [Planned Features](#planned-features)
 - [License](#license)
 
 ## Features
@@ -28,7 +29,7 @@ Welcome to the **File Upload Service** project! This is a serverless REST API bu
 
 ### Prerequisites
 
-- Node.js (v14 or higher)
+- Node.js (v16 or higher)
 - AWS account and credentials
 - Serverless Framework
 
@@ -96,7 +97,10 @@ The test cases are defined in the __tests__ directory.
 
 ### API Testing
 
-For testing the API, you can use Jest for unit testing and Postman for API testing. The FILE-UPLOAD-SERVICE API` Tests.postman_collection.json` file in this repository contains a Postman collection with predefined test cases for the API endpoints. You can import this collection into Postman and run the tests interactively or automate them using Newman in your CI/CD pipeline.
+For testing the API, you can use Jest for unit testing and Postman for API testing. `The FILE-UPLOAD-SERVICE API Tests.postman_collection.json` file in this repository contains a Postman collection with predefined test cases for the API endpoints. You can import this collection into Postman and run the tests interactively or automate them using Newman in your CI/CD pipeline.
+
+## Planned Features
+I am actively developing new features for the File Upload Service, including the implementation of a virus scan function to ensure uploaded files are safe. Stay tuned for updates on this exciting addition!
 
 ## License
 This project is licensed under the MIT License.
