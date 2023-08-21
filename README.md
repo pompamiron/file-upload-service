@@ -37,7 +37,7 @@ Welcome to the **File Upload Service** project! This is a serverless REST API bu
 
 1. Clone this repository:
 
-   `git clone [https://github.com/your-username/file-upload-service.git]`
+   `git clone https://github.com/pompamiron/file-upload-service.git`
 
 2. Install project dependencies:
 `cd file-upload-service
