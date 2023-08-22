@@ -32,6 +32,8 @@ Welcome to the **File Upload Service** project! This is a serverless REST API bu
 - Node.js (v16 or higher)
 - AWS account and credentials
 - Serverless Framework
+- S3 busket for storing files
+- A registered email address for notification purposes
 
 ### Installation
 
