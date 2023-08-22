@@ -40,9 +40,10 @@ Welcome to the **File Upload Service** project! This is a serverless REST API bu
    `git clone https://github.com/pompamiron/file-upload-service.git`
 
 2. Install project dependencies:
-`cd file-upload-service
 
-npm install`
+`cd file-upload-service`
+
+`npm install`
 
 ## Configuration
 
