@@ -1,8 +1,8 @@
-const FileService = require('./src/services/FileService')
-const EmailService = require('./src/services/EmailService')
-const Base64Validator = require('./src/validators/Base64Validator')
-const FileTypeValidator = require('./src/validators/FileTypeValidator')
-const FileSizeValidator = require('./src/validators/FileSizeValidator')
+const FileService = require('./services/FileService')
+const EmailService = require('./services/EmailService')
+const Base64Validator = require('./validators/Base64Validator')
+const FileTypeValidator = require('./validators/FileTypeValidator')
+const FileSizeValidator = require('./validators/FileSizeValidator')
 
 exports.handler = async (event) => {
   try {

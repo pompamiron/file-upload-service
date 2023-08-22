@@ -1,4 +1,4 @@
-const { handler } = require('../fileUploadHandler')
+const { handler } = require('../src/fileUploadHandler')
 const FileService = require('../src/services/FileService')
 const EmailService = require('../src/services/EmailService')
 

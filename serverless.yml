@@ -54,7 +54,7 @@ plugins:
 
 functions:
   fileUploadFunction:
-    handler: fileUploadHandler.handler
+    handler: ./src/fileUploadHandler.handler
     role: ${self:provider.environment.IAM_ROLE}
     events:
       - http:
