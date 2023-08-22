@@ -1,6 +1,6 @@
-const AWS = require('aws-sdk');
+const AWS = require('aws-sdk')
 
-const SES = new AWS.SES();
+const SES = new AWS.SES()
 
 async function sendEmailNotification(emailAddress, message) {
   await SES.sendEmail({
@@ -18,9 +18,9 @@ async function sendEmailNotification(emailAddress, message) {
         },
       },
     },
-  }).promise();
+  }).promise()
 }
 
 module.exports = {
   sendEmailNotification,
-};
+}

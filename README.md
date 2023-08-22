@@ -61,7 +61,7 @@ Before deploying the service, you need to set up the necessary environment varia
 
 Deploy the service using the Serverless Framework:
 
-  `serverless deploy`
+`serverless deploy`
 
 ## API Documentation
 
@@ -73,7 +73,7 @@ To use the API, make HTTP requests to the deployed endpoints. You will need an A
 
 Here's an example using cURL:
 
-  `curl -X POST \
+`curl -X POST \
     -H "x-api-key: YOUR_API_KEY_HERE" \
     -H "Content-Type: application/json" \
     -d '{
@@ -93,18 +93,18 @@ For unit testing the Lambda functions, this project uses Jest. Jest is a JavaScr
 
 To run unit tests:
 
-  `npm test`
+`npm test`
 
-The test cases are defined in the __tests__ directory.
+The test cases are defined in the **tests** directory.
 
 ### API Testing
 
 For testing the API, you can use Jest for unit testing and Postman for API testing. `The FILE-UPLOAD-SERVICE API Tests.postman_collection.json` file in this repository contains a Postman collection with predefined test cases for the API endpoints. You can import this collection into Postman and run the tests interactively or automate them using Newman in your CI/CD pipeline.
 
 ## Planned Features
+
 I am actively developing new features for the File Upload Service, including the implementation of a virus scan function to ensure uploaded files are safe. Stay tuned for updates on this exciting addition!
 
 ## License
+
 This project is licensed under the MIT License.
-
-

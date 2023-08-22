@@ -1,6 +1,6 @@
-swagger: "2.0"
+swagger: '2.0'
 info:
-  version: "1.0.0"
+  version: '1.0.0'
   title: File Upload API
 paths:
   /file_upload_service:
@@ -73,6 +73,6 @@ paths:
               message: An error occurred
 securityDefinitions:
   api_key:
-    type: "apiKey"
-    name: "x-api-key"
-    in: "header"
+    type: 'apiKey'
+    name: 'x-api-key'
+    in: 'header'

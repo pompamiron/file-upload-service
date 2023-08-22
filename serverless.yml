@@ -1,10 +1,10 @@
 service: file-upload-service
-frameworkVersion: "3"
+frameworkVersion: '3'
 
 provider:
   name: aws
   runtime: nodejs16.x
-  stage: ${opt:stage, 'dev'} 
+  stage: ${opt:stage, 'dev'}
   region: ap-southeast-2
   environment:
     S3_BUCKET: YOUR_S3_BUCKET  # Replace with your S3 bucket name
@@ -22,33 +22,32 @@ provider:
 resources:
   Resources:
     UploadFileServiceBucket:
-      Type: "AWS::S3::Bucket"
+      Type: 'AWS::S3::Bucket'
       Properties:
         BucketName: ${self:provider.environment.S3_BUCKET}
         AccessControl: Private
         CorsConfiguration:
           CorsRules:
             - AllowedOrigins:
-                - "*"
+                - '*'
               AllowedMethods:
                 - POST
               AllowedHeaders:
-                - "*"
+                - '*'
     UploadFileServiceTopic:
-      Type: "AWS::SNS::Topic"
+      Type: 'AWS::SNS::Topic'
       Properties:
-        DisplayName: "UploadFileServiceTopic"
-        TopicName: "UploadFileServiceTopic"
+        DisplayName: 'UploadFileServiceTopic'
+        TopicName: 'UploadFileServiceTopic'
 
 custom:
   documentation:
     api:
       info:
-        version: "1.0"
-        title: "File Upload API"
+        version: '1.0'
+        title: 'File Upload API'
     javascript:
-      path: "./swagger.yaml"
-
+      path: './swagger.yaml'
 
 plugins:
   - serverless-aws-documentation

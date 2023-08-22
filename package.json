@@ -4,12 +4,15 @@
   "description": "",
   "main": "handler.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "author": "chalakorn manpirom",
   "license": "MIT",
   "devDependencies": {
     "jest": "^29.6.3",
+    "prettier": "^3.0.2",
     "serverless-aws-documentation": "^1.1.0"
   }
 }
