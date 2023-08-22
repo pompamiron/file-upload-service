@@ -1,22 +1,35 @@
 {
 	"info": {
 		"name": "FILE-UPLOAD-SERVICE API Tests",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 	},
 	"item": [
 		{
 			"name": "POST /file_upload_service - Positive Test: Successful Upload",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.response.to.have.status(200);",
+							"",
+							"pm.response.to.have.jsonBody('message', 'File uploaded and email sent successfully');"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\": \"test@example.com\",\n    \"file\": {\n        \"fileName\": \"test-file.txt\",\n        \"fileData\": \"dGVzdCBmaWxlIGRhdGE=\"\n    }\n}"
+					"raw": "{\n    \"email\": \"{{EMAIL}}\",\n    \"file\": {\n        \"fileName\": \"{{FILE_NAME}}\",\n        \"fileData\": \"{{FILE_DATA}}\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
 					"raw": "{{URL}}",
@@ -29,30 +42,35 @@
 		},
 		{
 			"name": "POST /file_upload_service - Negative Test: Missing Email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.response.to.have.status(400);",
+							"",
+							"pm.response.to.have.jsonBody('message', 'Missing required parameters');"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
-				"header": [
-					{
-						"key": "x-api-key",
-						"value": "your-mock-api-key"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"file\":{\"fileName\":\"test-file.txt\",\"fileData\":\"dGVzdCBmaWxlIGRhdGE=\"}}"
+					"raw": "{\n    \"file\": {\n        \"fileName\": \"{{FILE_NAME}}\",\n        \"fileData\": \"{{FILE_DATA}}\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
-					"raw": "http://your-api-url/file_upload_service",
-					"protocol": "http",
+					"raw": "{{URL}}",
 					"host": [
-						"your-api-url"
-					],
-					"path": [
-						"file_upload_service"
+						"{{URL}}"
 					]
 				}
 			},
@@ -60,30 +78,35 @@
 		},
 		{
 			"name": "POST /file_upload_service - Negative Test: Missing File Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.response.to.have.status(400);",
+							"",
+							"pm.response.to.have.jsonBody('message', 'Missing required parameters');"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
-				"header": [
-					{
-						"key": "x-api-key",
-						"value": "your-mock-api-key"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"email\":\"test@example.com\",\"file\":{\"fileName\":\"test-file.txt\"}}"
+					"raw": "{\n    \"email\": \"{{EMAIL}}\",\n    \"file\": {\n        \"fileName\": \"{{FILE_NAME}}\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
-					"raw": "http://your-api-url/file_upload_service",
-					"protocol": "http",
+					"raw": "{{URL}}",
 					"host": [
-						"your-api-url"
-					],
-					"path": [
-						"file_upload_service"
+						"{{URL}}"
 					]
 				}
 			},
@@ -91,30 +114,35 @@
 		},
 		{
 			"name": "POST /file_upload_service - Negative Test: Missing File Name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.response.to.have.status(400);",
+							"",
+							"pm.response.to.have.jsonBody('message', 'Missing required parameters');"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
-				"header": [
-					{
-						"key": "x-api-key",
-						"value": "your-mock-api-key"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"email\":\"test@example.com\",\"file\":{\"fileData\":\"dGVzdCBmaWxlIGRhdGE=\"}}"
+					"raw": "{\n    \"email\": \"{{EMAIL}}\",\n    \"file\": {\n        \"fileData\": \"{{FILE_DATA}}\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
-					"raw": "http://your-api-url/file_upload_service",
-					"protocol": "http",
+					"raw": "{{URL}}",
 					"host": [
-						"your-api-url"
-					],
-					"path": [
-						"file_upload_service"
+						"{{URL}}"
 					]
 				}
 			},
@@ -122,30 +150,35 @@
 		},
 		{
 			"name": "POST /file_upload_service - Negative Test: Invalid Base64 File Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.response.to.have.status(400);",
+							"",
+							"pm.response.to.have.jsonBody('message', 'Invalid file data format');"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
-				"header": [
-					{
-						"key": "x-api-key",
-						"value": "your-mock-api-key"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"email\":\"test@example.com\",\"file\":{\"fileName\":\"test-file.txt\",\"fileData\":\"invalid-base64-data\"}}"
+					"raw": "{\n    \"email\": \"{{EMAIL}}\",\n    \"file\": {\n        \"fileName\": \"{{FILE_NAME}}\",\n        \"fileData\": \"test-invalid-file-data\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
-					"raw": "http://your-api-url/file_upload_service",
-					"protocol": "http",
+					"raw": "{{URL}}",
 					"host": [
-						"your-api-url"
-					],
-					"path": [
-						"file_upload_service"
+						"{{URL}}"
 					]
 				}
 			},
@@ -153,92 +186,35 @@
 		},
 		{
 			"name": "POST /file_upload_service - Negative Test: Invalid File Type",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "x-api-key",
-						"value": "your-mock-api-key"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.response.to.have.status(400);",
+							"",
+							"pm.response.to.have.jsonBody('message', 'Invalid file type');"
+						],
+						"type": "text/javascript"
 					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"email\":\"test@example.com\",\"file\":{\"fileName\":\"invalid-file.exe\",\"fileData\":\"dGVzdCBmaWxlIGRhdGE=\"}}"
-				},
-				"url": {
-					"raw": "http://your-api-url/file_upload_service",
-					"protocol": "http",
-					"host": [
-						"your-api-url"
-					],
-					"path": [
-						"file_upload_service"
-					]
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "POST /file_upload_service - Negative Test: S3 Upload Error",
+			],
 			"request": {
 				"method": "POST",
-				"header": [
-					{
-						"key": "x-api-key",
-						"value": "your-mock-api-key"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"email\":\"test@example.com\",\"file\":{\"fileName\":\"test-file.txt\",\"fileData\":\"dGVzdCBmaWxlIGRhdGE=\"}}"
-				},
-				"url": {
-					"raw": "http://your-api-url/file_upload_service",
-					"protocol": "http",
-					"host": [
-						"your-api-url"
-					],
-					"path": [
-						"file_upload_service"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "POST /file_upload_service - Negative Test: Email Send Error",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "x-api-key",
-						"value": "your-mock-api-key"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
+					"raw": "{\n    \"email\": \"{{EMAIL}}\",\n    \"file\": {\n        \"fileName\": \"test.exe\",\n        \"fileData\": \"{{FILE_DATA}}\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
 					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"email\":\"test@example.com\",\"file\":{\"fileName\":\"test-file.txt\",\"fileData\":\"dGVzdCBmaWxlIGRhdGE=\"}}"
 				},
 				"url": {
-					"raw": "http://your-api-url/file_upload_service",
-					"protocol": "http",
+					"raw": "{{URL}}",
 					"host": [
-						"your-api-url"
-					],
-					"path": [
-						"file_upload_service"
+						"{{URL}}"
 					]
 				}
 			},
@@ -246,76 +222,38 @@
 		},
 		{
 			"name": "POST /file_upload_service - Negative Test: Missing API Key",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.response.to.have.status(403);",
+							"",
+							"pm.response.to.have.jsonBody('message', 'Forbidden');"
+						],
+						"type": "text/javascript"
 					}
-				],
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"email\":\"test@example.com\",\"file\":{\"fileName\":\"test-file.txt\",\"fileData\":\"dGVzdCBmaWxlIGRhdGE=\"}}"
+					"raw": "{\n    \"email\": \"{{EMAIL}}\",\n    \"file\": {\n        \"fileName\": \"{{FILE_NAME}}\",\n        \"fileData\": \"{{FILE_DATA}}\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
-					"raw": "http://your-api-url/file_upload_service",
-					"protocol": "http",
+					"raw": "{{URL}}",
 					"host": [
-						"your-api-url"
-					],
-					"path": [
-						"file_upload_service"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "POST /file_upload_service - Negative Test: Invalid HTTP Method",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "x-api-key",
-						"value": "your-mock-api-key"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"url": {
-					"raw": "http://your-api-url/file_upload_service",
-					"protocol": "http",
-					"host": [
-						"your-api-url"
-					],
-					"path": [
-						"file_upload_service"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "POST /file_upload_service - Negative Test: Invalid Path",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"email\":\"test@example.com\",\"file\":{\"fileName\":\"test-file.txt\",\"fileData\":\"dGVzdCBmaWxlIGRhdGE=\"}}"
-				},
-				"url": {
-					"raw": "{{URL}}-invalid",
-					"host": [
-						"{{URL}}-invalid"
+						"{{URL}}"
 					]
 				}
 			},
@@ -370,6 +308,16 @@
 		{
 			"key": "EMAIL",
 			"value": "test@example.com",
+			"type": "string"
+		},
+		{
+			"key": "FILE_NAME",
+			"value": "test-file.txt",
+			"type": "string"
+		},
+		{
+			"key": "FILE_DATA",
+			"value": "dGVzdCBmaWxlIGRhdGE=",
 			"type": "string"
 		}
 	]
