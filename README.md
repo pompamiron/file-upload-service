@@ -41,9 +41,9 @@ Welcome to the **File Upload Service** project! This is a serverless REST API bu
 
 2. Install project dependencies:
 
-`cd file-upload-service`
+  `cd file-upload-service`
 
-`npm install`
+  `npm install`
 
 ## Configuration
 
@@ -59,7 +59,7 @@ Before deploying the service, you need to set up the necessary environment varia
 
 Deploy the service using the Serverless Framework:
 
-`serverless deploy`
+  `serverless deploy`
 
 ## API Documentation
 
@@ -71,16 +71,16 @@ To use the API, make HTTP requests to the deployed endpoints. You will need an A
 
 Here's an example using cURL:
 
-`curl -X POST \
-  -H "x-api-key: YOUR_API_KEY_HERE" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "email": "test@example.com",
-    "file": {
-      "fileName": "test-file.txt",
-      "fileData": "base64-encoded-file-data"
-    }
-  }' \
+  `curl -X POST \
+    -H "x-api-key: YOUR_API_KEY_HERE" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "email": "test@example.com",
+      "file": {
+        "fileName": "test-file.txt",
+        "fileData": "base64-encoded-file-data"
+      }
+    }' \
   https://your-api-url/dev/file_upload_service`
 
 ## Testing
@@ -91,7 +91,7 @@ For unit testing the Lambda functions, this project uses Jest. Jest is a JavaScr
 
 To run unit tests:
 
-`npm test`
+  `npm test`
 
 The test cases are defined in the __tests__ directory.
 
