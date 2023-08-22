@@ -41,9 +41,9 @@ Welcome to the **File Upload Service** project! This is a serverless REST API bu
 
 2. Install project dependencies:
 
-  `cd file-upload-service`
+   `cd file-upload-service`
 
-  `npm install`
+   `npm install`
 
 ## Configuration
 
