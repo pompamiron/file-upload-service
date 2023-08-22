@@ -31,10 +31,7 @@ resources:
             - AllowedOrigins:
                 - "*"
               AllowedMethods:
-                - GET
-                - PUT
                 - POST
-                - DELETE
               AllowedHeaders:
                 - "*"
     UploadFileServiceTopic:
@@ -45,10 +42,16 @@ resources:
 
 custom:
   documentation:
-    openApiFile: "./swagger.yaml" 
+    api:
+      info:
+        version: "1.0"
+        title: "File Upload API"
+    javascript:
+      path: "./swagger.yaml"
+
 
 plugins:
-  - serverless-openapi-documenter
+  - serverless-aws-documentation
 
 functions:
   fileUploadFunction:

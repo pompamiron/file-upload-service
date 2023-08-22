@@ -10,6 +10,6 @@
   "license": "MIT",
   "devDependencies": {
     "jest": "^29.6.3",
-    "serverless-openapi-documenter": "^0.0.69"
+    "serverless-aws-documentation": "^1.1.0"
   }
 }
